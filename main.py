@@ -86,10 +86,10 @@ show_letter = True
 current_curve_id = 0
 prev_edited_curve_id = None
 
-# f = open('letters_json/a.json')
-# all_curves = json.load(f)
+f = open('letters_json/z.json')
+all_curves = json.load(f)
 
-all_curves = [[]]
+# all_curves = [[]]
 all_curves.append(control_points)
 
 target_img_size = None
