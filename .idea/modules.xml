@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/KonkursAN_II.iml" filepath="$PROJECT_DIR$/.idea/KonkursAN_II.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/BezierCurvesEditor.iml" filepath="$PROJECT_DIR$/.idea/BezierCurvesEditor.iml" />
     </modules>
   </component>
 </project>

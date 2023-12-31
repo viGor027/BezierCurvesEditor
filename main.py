@@ -71,7 +71,7 @@ text5 = smallfont.render('Edycja On ', True, BLACK)
 text6 = smallfont.render('Edycja Off', True, BLACK)
 text7 = smallfont.render('Wyswietl litere', True, BLACK)
 
-letter_img = pygame.image.load('letters_raw_extracted/y.png')
+letter_img = pygame.image.load('letters_raw_extracted/z.png')
 # img_width, img_height = example_img.get_width(), example_img.get_height()
 
 # Main game loop
@@ -86,10 +86,10 @@ show_letter = True
 current_curve_id = 0
 prev_edited_curve_id = None
 
-f = open('letters_json/a.json')
-all_curves = json.load(f)
+# f = open('letters_json/a.json')
+# all_curves = json.load(f)
 
-# all_curves = [[]]
+all_curves = [[]]
 all_curves.append(control_points)
 
 target_img_size = None
@@ -131,7 +131,7 @@ while running:
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 10 <= mouse[1] <= 50:  # kliknieto "siatka"
                 draw_grid = not draw_grid
             elif event.button == 1 and 10 <= mouse[0] <= 85 and 60 <= mouse[1] <= 100:  # kliknieto "zapisz"
-                with open('y.json', 'w', encoding='utf-8') as f:
+                with open('z.json', 'w', encoding='utf-8') as f:
                     json.dump(all_curves, f, ensure_ascii=False, indent=4)
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 60 <= mouse[1] <= 100:  # kliknieto "zmien prosta"
                 edit = True
