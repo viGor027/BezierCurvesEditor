@@ -21,8 +21,6 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Bezier Curve Editor")
 clock = pygame.time.Clock()
 
-# Control points list
-control_points = []
 
 
 # Function to perform de Casteljau's algorithm
@@ -71,8 +69,7 @@ text5 = smallfont.render('Edycja On ', True, BLACK)
 text6 = smallfont.render('Edycja Off', True, BLACK)
 text7 = smallfont.render('Wyswietl litere', True, BLACK)
 
-letter_img = pygame.image.load('letters_raw_extracted/z.png')
-# img_width, img_height = example_img.get_width(), example_img.get_height()
+letter_img = pygame.image.load('letters_raw_extracted/ź.png')
 
 # Main game loop
 running = True
@@ -86,11 +83,15 @@ show_letter = True
 current_curve_id = 0
 prev_edited_curve_id = None
 
+# read curves from file
 f = open('letters_json/z.json')
 all_curves = json.load(f)
+all_curves.pop(-1)
+current_curve_id = len(all_curves) - 1
+prev_edited_curve_id = len(all_curves) - 2
 
+# start with no curves
 # all_curves = [[]]
-all_curves.append(control_points)
 
 target_img_size = None
 target_img_rect = None
@@ -131,7 +132,7 @@ while running:
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 10 <= mouse[1] <= 50:  # kliknieto "siatka"
                 draw_grid = not draw_grid
             elif event.button == 1 and 10 <= mouse[0] <= 85 and 60 <= mouse[1] <= 100:  # kliknieto "zapisz"
-                with open('z.json', 'w', encoding='utf-8') as f:
+                with open('ź.json', 'w', encoding='utf-8') as f:
                     json.dump(all_curves, f, ensure_ascii=False, indent=4)
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 60 <= mouse[1] <= 100:  # kliknieto "zmien prosta"
                 edit = True
@@ -157,19 +158,28 @@ while running:
                 dragged_point_index = None
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE and current_curve_id is not None:
+
                 closest_index, closest_curve_id = find_closest_point(pygame.mouse.get_pos(), current_curve_id)
                 if closest_curve_id is not None and closest_index is not None:
                     all_curves[closest_curve_id].pop(closest_index)
+                    if len(all_curves[current_curve_id]) == 0:
+                        all_curves.pop(current_curve_id)
+                        prev_edited_curve_id = len(all_curves) - 2
+                        current_curve_id = len(all_curves) - 1
             elif event.key == pygame.K_e and edit:
+                prev_edited_curve_id = current_curve_id
                 _, current_curve_id = find_closest_point(pygame.mouse.get_pos())
                 edit = False
             elif event.key == pygame.K_i:
                 img_x, img_y = pygame.mouse.get_pos()
             elif event.key == pygame.K_n:
+
                 if (prev_edited_curve_id is None and len(all_curves[current_curve_id]) > 0) or \
                    (prev_edited_curve_id is not None and len(all_curves[prev_edited_curve_id]) > 0):
+
+                    point_to_copy = all_curves[current_curve_id][-1]
                     prev_edited_curve_id = current_curve_id
-                    current_curve_id += 1
+                    current_curve_id = len(all_curves)
                     all_curves.append([])
                     all_curves[current_curve_id].append(all_curves[prev_edited_curve_id][-1])
 
