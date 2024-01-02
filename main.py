@@ -84,7 +84,7 @@ current_curve_id = 0
 prev_edited_curve_id = None
 
 # read curves from file
-f = open('letters_json/ę.json')
+f = open('letters_json/e.json')
 all_curves = json.load(f)
 current_curve_id = len(all_curves) - 1
 prev_edited_curve_id = len(all_curves) - 2
@@ -131,7 +131,7 @@ while running:
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 10 <= mouse[1] <= 50:  # kliknieto "siatka"
                 draw_grid = not draw_grid
             elif event.button == 1 and 10 <= mouse[0] <= 85 and 60 <= mouse[1] <= 100:  # kliknieto "zapisz"
-                with open('ę.json', 'w', encoding='utf-8') as f:
+                with open('e.json', 'w', encoding='utf-8') as f:
                     json.dump(all_curves, f, ensure_ascii=False, indent=4)
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 60 <= mouse[1] <= 100:  # kliknieto "zmien prosta"
                 edit = True
