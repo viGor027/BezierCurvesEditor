@@ -69,7 +69,7 @@ text5 = smallfont.render('Edycja On ', True, BLACK)
 text6 = smallfont.render('Edycja Off', True, BLACK)
 text7 = smallfont.render('Wyswietl litere', True, BLACK)
 
-letter_img = pygame.image.load('letters_raw_extracted/k.png')
+letter_img = pygame.image.load('letters_raw_extracted/p.png')
 
 # Main game loop
 running = True
@@ -84,13 +84,14 @@ current_curve_id = 0
 prev_edited_curve_id = None
 
 # read curves from file
-f = open('letters_json/k.json')
-all_curves = json.load(f)
-current_curve_id = len(all_curves) - 1
-prev_edited_curve_id = len(all_curves) - 2
+# f = open('test.json')
+# f = open('letters_json/p.json')
+# all_curves = json.load(f)
+# current_curve_id = len(all_curves) - 1
+# prev_edited_curve_id = len(all_curves) - 2
 
 # start with no curves
-# all_curves = [[]]
+all_curves = [[]]
 
 target_img_size = None
 target_img_rect = None
@@ -131,7 +132,7 @@ while running:
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 10 <= mouse[1] <= 50:  # kliknieto "siatka"
                 draw_grid = not draw_grid
             elif event.button == 1 and 10 <= mouse[0] <= 85 and 60 <= mouse[1] <= 100:  # kliknieto "zapisz"
-                with open('k.json', 'w', encoding='utf-8') as f:
+                with open('p.json', 'w', encoding='utf-8') as f:
                     json.dump(all_curves, f, ensure_ascii=False, indent=4)
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 60 <= mouse[1] <= 100:  # kliknieto "zmien prosta"
                 edit = True
@@ -144,6 +145,10 @@ while running:
             elif event.button == 1 and 10 <= mouse[0] <= 170 and 160 <= mouse[1] <= 200:
                 show_letter = not show_letter
             elif event.button == 1 and current_curve_id is not None:  # Left mouse button
+                if len(all_curves) == 0:
+                    all_curves.append([])
+                    current_curve_id += 1
+                    prev_edited_curve_id += 1
                 all_curves[current_curve_id].append(event.pos)
             elif event.button == 3 and current_curve_id is not None:  # Right mouse button
                 closest_index, closest_curve_id = find_closest_point(event.pos)
@@ -157,7 +162,6 @@ while running:
                 dragged_point_index = None
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE and current_curve_id is not None:
-
                 closest_index, closest_curve_id = find_closest_point(pygame.mouse.get_pos(), current_curve_id)
                 if closest_curve_id is not None and closest_index is not None:
                     all_curves[closest_curve_id].pop(closest_index)
@@ -216,8 +220,8 @@ while running:
     # Draw Bezier curve using de Casteljau's algorithm
     for control_points_id in range(len(all_curves)):
         if len(all_curves[control_points_id]) >= 2:
-            for t in range(0, 1001):
-                t /= 1000.0
+            for t in range(0, 80*len(all_curves[control_points_id])+1):
+                t /= 80 * len(all_curves[control_points_id])
                 p = de_casteljau(t, all_curves[control_points_id])
                 if control_points_id == current_curve_id:
                     pygame.draw.circle(screen, ACTIVE_CURVE_COLOR, (int(p[0]), int(p[1])), 1)
