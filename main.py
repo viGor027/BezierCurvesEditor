@@ -69,7 +69,8 @@ text5 = smallfont.render('Edycja On ', True, BLACK)
 text6 = smallfont.render('Edycja Off', True, BLACK)
 text7 = smallfont.render('Wyswietl litere', True, BLACK)
 
-letter_img = pygame.image.load('letters_raw_extracted/n.png')
+# letter_img = pygame.image.load('letters_raw_extracted/n.png')
+letter_img = pygame.image.load('dummy_background.png')
 
 # Main game loop
 running = True
@@ -131,7 +132,7 @@ while running:
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 10 <= mouse[1] <= 50:  # kliknieto "siatka"
                 draw_grid = not draw_grid
             elif event.button == 1 and 10 <= mouse[0] <= 85 and 60 <= mouse[1] <= 100:  # kliknieto "zapisz"
-                with open('ń.json', 'w', encoding='utf-8') as f:
+                with open('nowa.json', 'w', encoding='utf-8') as f:
                     json.dump(all_curves, f, ensure_ascii=False, indent=4)
             elif event.button == 1 and 95 <= mouse[0] <= 170 and 60 <= mouse[1] <= 100:  # kliknieto "zmien prosta"
                 edit = True
