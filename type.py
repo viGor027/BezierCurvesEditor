@@ -81,12 +81,12 @@ a = json.load(letter)
 all_letters = []
 letters_copy = []
 
-adjust_p = ['a', 'ą', 'b', 'c',
-            'd', 'e', 'ę', 'h',
-            'i', 'k', 'l', 'ł',
-            'm', 'n', 'o', 'ó',
-            'u', 'r', 's', 't',
-            'w', 'x', 'z', 'ź', 'ż']
+adjust_p = ['a', 'ą', 'b', 'c', 'ć',
+            'd', 'e', 'ę', 'h', 'i',
+            'k', 'l', 'ł', 'm', 'n',
+            'ń', 'o', 'ó', 'u', 'r',
+            's', 'ś', 't', 'w', 'x',
+            'z', 'ź', 'ż']
 
 cursive = 1
 running = True
@@ -181,6 +181,11 @@ while running:
                 else:
                     draw_letter(c, 50, .25)
                 last_letter.append('ć')
+            elif keys[pygame.K_n] and keys[pygame.K_RALT]:
+                letter = open('letters_json/ń.json')
+                n = json.load(letter)
+                draw_letter(n, 18, .37)
+                last_letter.append('ń')
             elif event.key == pygame.K_SPACE:
                 all_letters.append([])
                 prev_begin_from.append(begin_from)
