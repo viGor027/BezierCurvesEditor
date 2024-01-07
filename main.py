@@ -84,14 +84,13 @@ current_curve_id = 0
 prev_edited_curve_id = None
 
 # read curves from file
-# f = open('test.json')
-f = open('letters_json/n.json')
-all_curves = json.load(f)
-current_curve_id = len(all_curves) - 1
-prev_edited_curve_id = len(all_curves) - 2
+# f = open('letters_json/n.json')
+# all_curves = json.load(f)
+# current_curve_id = len(all_curves) - 1
+# prev_edited_curve_id = len(all_curves) - 2
 
 # start with no curves
-# all_curves = [[]]
+all_curves = [[]]
 
 target_img_size = None
 target_img_rect = None

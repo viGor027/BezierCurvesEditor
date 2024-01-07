@@ -1,8 +1,0 @@
-main.py
-    spacja - usuwa najbliższy punkt od kursora
-    i - przestawia obrazek w obecne miejsce kursora
-    e - po wcześniejszym wcisnieciu zmien prosta przelacza na edycje innej prostej
-    n - dodaj nową prostą z pierwszym punktem takim jak ostatni punkt w poprzednio edytowanej krzywej
-
-type.py
-    tab - kursywa on/off

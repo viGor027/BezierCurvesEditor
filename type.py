@@ -88,6 +88,13 @@ adjust_p = ['a', 'ą', 'b', 'c', 'ć',
             's', 'ś', 't', 'w', 'x',
             'z', 'ź', 'ż']
 
+adjust_ly = ['a', 'ą', 'b', 'c', 'ć',
+            'd', 'e', 'ę', 'h', 'i',
+            'k', 'm', 'n', 'y',
+            'ń', 'o', 'ó', 'u', 'r',
+            's', 'ś', 't', 'w', 'x',
+            'z', 'ź', 'ż']
+
 cursive = 1
 running = True
 pointer_type = 10
@@ -165,6 +172,8 @@ while running:
                 l = json.load(letter)
                 if last_letter and last_letter[-1] == 'j':
                     draw_letter(l, -25, .4, -20)
+                elif last_letter and last_letter[-1] in adjust_ly:
+                    draw_letter(l, -25, .4, -25)
                 else:
                     draw_letter(l, -25, .4, -15)
                 last_letter.append('ł')
