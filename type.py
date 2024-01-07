@@ -168,6 +168,19 @@ while running:
                 else:
                     draw_letter(l, -25, .4, -15)
                 last_letter.append('ł')
+            elif keys[pygame.K_s] and keys[pygame.K_RALT]:
+                letter = open('letters_json/ś.json')
+                s = json.load(letter)
+                draw_letter(s, 25, .33)
+                last_letter.append('ś')
+            elif keys[pygame.K_c] and keys[pygame.K_RALT]:
+                letter = open('letters_json/ć.json')
+                c = json.load(letter)
+                if last_letter and last_letter[-1] == 'j':
+                    draw_letter(c, 50, .25, -5)
+                else:
+                    draw_letter(c, 50, .25)
+                last_letter.append('ć')
             elif event.key == pygame.K_SPACE:
                 all_letters.append([])
                 prev_begin_from.append(begin_from)
