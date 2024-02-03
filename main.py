@@ -1,21 +1,15 @@
 import pygame
 import sys
-import json
 from shape import Shape
+from views.constants import WIDTH, HEIGHT, FPS, WHITE, BLACK,\
+    ACTIVE_POINT_COLOR, ACTIVE_CURVE_COLOR, BUTTON_INACTIVE_COLOR, \
+    BUTTON_COLOR, CONTROL_POINT_RADIUS
 
 # Initialize Pygame
 pygame.init()
 
 # Constants
-WIDTH, HEIGHT = 800, 600
-FPS = 60
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-ACTIVE_POINT_COLOR = (202, 3, 252)
-ACTIVE_CURVE_COLOR = (3, 252, 177)
-BUTTON_INACTIVE_COLOR = (158, 5, 56)
-BUTTON_COLOR = (3, 252, 181)
-CONTROL_POINT_RADIUS = 3
+
 
 # Initialize the screen
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -75,7 +69,7 @@ target_img_size = None
 target_img_rect = None
 
 img_x, img_y = 0, 0
-
+print(type(screen))
 while running:
     screen.fill(WHITE)
     if show_letter:
