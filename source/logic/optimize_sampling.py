@@ -22,5 +22,4 @@ def get_optimized_moments(control_points: list):
     :param control_points: list of control points
     :return: np.array
     """
-    print(int(calc_distance(control_points)))
     return np.linspace(0, 1, num=int(calc_distance(control_points)//10 * 5))

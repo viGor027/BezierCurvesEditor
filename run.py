@@ -1,10 +1,10 @@
 import pygame
-from views.edit import Edit
-from views.start import Start
-from state.view_manager import ViewManager
-from state.edit_ui_manager import EditUIState
-from views.constants import WIDTH, HEIGHT, FPS
-from logic.shape import Shape
+from source.views.edit import Edit
+from source.views.start import Start
+from source.state.view_manager import ViewManager
+from source.state.edit_ui_manager import EditUIState
+from source.views.constants import WIDTH, HEIGHT, FPS
+from source.logic.shape import Shape
 
 
 class Main:

@@ -1,8 +1,8 @@
 import pygame
 import sys
 from tkinter import Tk, filedialog
-from views.constants import WIDTH, HEIGHT, WHITE, BUTTON_COLOR, BLACK
-from state.view_manager import ViewManager
+from source.views.constants import WIDTH, HEIGHT, WHITE, BUTTON_COLOR, BLACK
+from source.state.view_manager import ViewManager
 
 
 class Start:

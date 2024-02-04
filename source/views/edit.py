@@ -1,15 +1,15 @@
 import json
 import pygame
 import sys
-from views.constants import BLACK, RED, WHITE, \
+from source.views.constants import BLACK, RED, WHITE, \
     BUTTON_COLOR, BUTTON_INACTIVE_COLOR, \
     ACTIVE_POINT_COLOR, ACTIVE_CURVE_COLOR, CONTROL_POINT_RADIUS, \
     WIDTH, HEIGHT
-from state.view_manager import ViewManager
-from state.edit_ui_manager import EditUIState
-from logic.shape import Shape
-from logic.faster_drawing_alg import bezier
-from logic.optimize_sampling import get_optimized_moments
+from source.state.view_manager import ViewManager
+from source.state.edit_ui_manager import EditUIState
+from source.logic.shape import Shape
+from source.logic.faster_drawing_alg import bezier
+from source.logic.optimize_sampling import get_optimized_moments
 
 
 class Edit:
