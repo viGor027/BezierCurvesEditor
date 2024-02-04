@@ -8,7 +8,8 @@ from views.constants import BLACK, RED, WHITE, \
 from state.view_manager import ViewManager
 from state.edit_ui_manager import EditUIState
 from logic.shape import Shape
-from logic.drawing_alg import de_casteljau
+from logic.faster_drawing_alg import bezier
+from logic.optimize_sampling import get_optimized_moments
 
 
 class Edit:
@@ -19,6 +20,10 @@ class Edit:
         self.ui_state = EditUIState()
 
     def run(self):
+        """
+        Editing view
+        :return: None
+        """
         self.display.fill(WHITE)
         self._draw_grid()
         self._draw_buttons()
@@ -148,6 +153,10 @@ class Edit:
             pygame.draw.rect(self.display, BUTTON_INACTIVE_COLOR, [10, 110, 160, 40])
 
     def _draw_text(self):
+        """
+        Displays text on UI buttons
+        :return: None
+        """
         smallfont = pygame.font.SysFont('Bahnschrift', 14)
 
         new_curve = smallfont.render('New curve', True, BLACK)
@@ -169,7 +178,7 @@ class Edit:
     def _draw_control_points(self):
         """
         Draws control points of curves making up the shape
-        :return:
+        :return: None
         """
         shape = self.shape.get_shape()
         if self.ui_state.edit:
@@ -185,14 +194,14 @@ class Edit:
     def _draw_curves(self):
         """
         Draws all curves from shape
-        :return:
+        :return: None
         """
         shape = self.shape.get_shape()
         for control_points_id in range(len(shape)):
             if len(shape[control_points_id]) >= 2:
-                for t in range(0, 80 * len(shape[control_points_id]) + 1):
-                    t /= 80 * len(shape[control_points_id])
-                    p = de_casteljau(t, shape[control_points_id])
+                curve = bezier(shape[control_points_id], [1 for _ in range(len(shape[control_points_id]))])
+                for t in get_optimized_moments(shape[control_points_id]):
+                    p = curve(t)
                     if control_points_id == self.shape.get_current_curve_id() and self.ui_state.edit:
                         pygame.draw.circle(self.display, ACTIVE_CURVE_COLOR, (int(p[0]), int(p[1])), 1)
                     else:

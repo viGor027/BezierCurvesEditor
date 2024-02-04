@@ -1,4 +1,3 @@
-import sys
 import pygame
 from views.edit import Edit
 from views.start import Start
