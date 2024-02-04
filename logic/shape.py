@@ -118,6 +118,16 @@ class Shape:
             self.new_curve()
             self.add_point(point_to_be_copied)
 
+    def load_shape(self, shape: list[list]):
+        """
+        Loads shape to object
+        :param shape: list of curves of loaded json file
+        :return:
+        """
+        self._shape = shape
+        self._prev_edited_curve.extend([i for i in range(len(shape) - 1)])
+        self._current_curve_id = len(shape) - 1
+
     def get_current_curve_id(self):
         """
         :return: id of a currently edited curve

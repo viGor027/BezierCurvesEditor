@@ -2,8 +2,10 @@ import sys
 import pygame
 from views.edit import Edit
 from views.start import Start
-from state.state_manager import StateManager
+from state.view_manager import ViewManager
+from state.edit_ui_manager import EditUIState
 from views.constants import WIDTH, HEIGHT, FPS
+from logic.shape import Shape
 
 
 class Main:
@@ -14,22 +16,23 @@ class Main:
 
         pygame.display.set_caption("Bezier Curve Editor")
 
-        self.state_manager = StateManager("start")
-        self.start = Start(self.screen, self.state_manager)
-        self.edit = Edit(self.screen, self.state_manager)
+        self.edit_ui_state_manager = EditUIState()
+        self.shape = Shape()
 
-        self.states = {"start": self.start, "edit": self.edit}
+        self.view_manager = ViewManager("start")
+        self.start = Start(self.screen, self.view_manager)
+        self.edit = Edit(self.screen, self.view_manager)
+
+        self.views = {"start": self.start, "edit": self.edit}
 
     def run(self):
         """
         runtime loop
         :return: None
         """
-        bg_path = None
-        shape_path = None
         while True:
-            self.states[self.state_manager.get_state()].run()
-
+            self.views[self.view_manager.get_state()].run()
+            pygame.display.flip()
             pygame.display.update()
             self.clock.tick(FPS)
 

@@ -1,6 +1,6 @@
 import pygame
 import sys
-from shape import Shape
+from logic.shape import Shape
 from views.constants import WIDTH, HEIGHT, FPS, WHITE, BLACK,\
     ACTIVE_POINT_COLOR, ACTIVE_CURVE_COLOR, BUTTON_INACTIVE_COLOR, \
     BUTTON_COLOR, CONTROL_POINT_RADIUS
