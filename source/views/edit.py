@@ -9,7 +9,7 @@ from source.state.view_manager import ViewManager
 from source.state.edit_ui_manager import EditUIState
 from source.logic.shape import Shape
 from source.logic.faster_drawing_alg import bezier
-from source.logic.optimize_sampling import get_optimized_moments
+from source.logic.optimize_sampling import get_optimized_moments, get_optimized_moments_experimental
 
 
 class Edit:
