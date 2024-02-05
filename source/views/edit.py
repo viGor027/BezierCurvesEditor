@@ -73,6 +73,8 @@ class Edit:
                     self.shape.switch_curve(pygame.mouse.get_pos())
                 elif event.key == pygame.K_n:
                     self.shape.c0_connection()
+                elif event.key == pygame.K_2:
+                    self.shape.c2_connection(mouse)
 
         if self.ui_state.dragging and pygame.mouse.get_pressed()[2]:
             self.shape.update_point(self.ui_state.dragged_point_index, pygame.mouse.get_pos())

@@ -89,11 +89,11 @@ adjust_p = ['a', 'ą', 'b', 'c', 'ć',
             'z', 'ź', 'ż']
 
 adjust_ly = ['a', 'ą', 'b', 'c', 'ć',
-            'd', 'e', 'ę', 'h',
-            'k', 'm', 'n', 'y',
-            'ń', 'o', 'ó', 'u', 'r',
-            's', 'ś', 't', 'w', 'x',
-            'z', 'ź', 'ż']
+             'd', 'e', 'ę', 'h',
+             'k', 'm', 'n', 'y',
+             'ń', 'o', 'ó', 'u', 'r',
+             's', 'ś', 't', 'w', 'x',
+             'z', 'ź', 'ż']
 
 cursive = 1
 running = True
@@ -112,8 +112,8 @@ while running:
     # # górna linia pomocnicza
     # pygame.draw.line(screen, BLACK, (0, HEIGHT - 190), (WIDTH, HEIGHT - 190))
 
-    pygame.draw.line(screen, BLACK, (begin_from, 30), (begin_from, HEIGHT-100))
-    pygame.draw.line(screen, BLACK, (begin_from + 1, 30), (begin_from + 1, HEIGHT-100))
+    pygame.draw.line(screen, BLACK, (begin_from, 30), (begin_from, HEIGHT - 100))
+    pygame.draw.line(screen, BLACK, (begin_from + 1, 30), (begin_from + 1, HEIGHT - 100))
 
     for event in pygame.event.get():
         keys = pygame.key.get_pressed()

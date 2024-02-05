@@ -1,11 +1,11 @@
 import json
+import numpy as np
 
 
 class Shape:
     def __init__(self):
         self._shape: list[list] = []
         self._current_curve_id: int = -1
-        self._prev_edited_curve: list = []
 
     def new_curve(self):
         """
@@ -16,7 +16,6 @@ class Shape:
             self._current_curve_id = len(self._shape) - 1
         else:
             self._shape.append([])
-            self._prev_edited_curve.append(self._current_curve_id)
             self._current_curve_id += 1
 
     def add_point(self, point: tuple):
@@ -92,7 +91,6 @@ class Shape:
         :return: None
         """
         closest_point_id, closest_curve_id = self._search_through_all_curves(mouse_pos)
-        self._prev_edited_curve.append(self._current_curve_id)
         self._current_curve_id = closest_curve_id
 
     def delete_point(self, mouse_pos: tuple):
@@ -106,7 +104,7 @@ class Shape:
             self._shape[currently_edited_curve_id].pop(closest_point_id)
             if len(self._shape[currently_edited_curve_id]) == 0:
                 self._shape.pop(currently_edited_curve_id)
-                self._current_curve_id = self._prev_edited_curve.pop(-1)
+                self._current_curve_id = -1
 
     def c0_connection(self):
         """
@@ -118,6 +116,16 @@ class Shape:
             self.new_curve()
             self.add_point(point_to_be_copied)
 
+    def c2_connection(self, point: tuple):
+        if self._current_curve_id != -1 and len(self._shape[self._current_curve_id]) >= 2:
+            orientation_point = np.array(self._shape[self._current_curve_id][-2])
+            last_point = np.array(self._shape[self._current_curve_id][-1])
+            vector = last_point - orientation_point
+            self.c0_connection()
+            current_last_point = np.array(self._shape[self._current_curve_id][0])
+            self.add_point(tuple(current_last_point + vector))
+            self.add_point(point)
+
     def load_shape(self, shape: list[list]):
         """
         Loads shape to object
@@ -125,7 +133,6 @@ class Shape:
         :return:
         """
         self._shape = shape
-        self._prev_edited_curve.extend([i for i in range(len(shape) - 1)])
         self._current_curve_id = len(shape) - 1
 
     def get_current_curve_id(self):
