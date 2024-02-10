@@ -39,11 +39,9 @@ The subject of the competition was to create a font editing program, design a fo
 
 # Getting started
 
-Create a virtual environment and install:
-- [Pygame](https://www.pygame.org)
-- [NumPy](https://numpy.org)
+Create a virtual environment and install required packages.
 
-You can do this via ```pip install package_name```
+You can do this via ```pip install -r requirements.txt```
 
 If you want to run editor run the ```run.py``` file, and if program for typing then run ```type.py```.  
 
