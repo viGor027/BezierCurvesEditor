@@ -15,7 +15,7 @@ class Type:
         self.view_manager = view_manager
         self.caption = Caption()
 
-    def run(self):
+    def run(self) -> None:
         """
         Typing view
         :return: None
@@ -25,10 +25,10 @@ class Type:
         self._event_handler()
         self._draw_letters()
 
-    def _draw_line(self):
+    def _draw_line(self) -> None:
         """
         Draws line that points current typing place
-        :return:
+        :return: None
         """
         pygame.draw.line(self.display, BLACK,
                          (self.caption.begin_from, 30), (self.caption.begin_from, TYPE_HEIGHT - 100))
@@ -51,10 +51,10 @@ class Type:
                         p = curve(t)
                         pygame.draw.circle(self.display, BLACK, (int(p[0]), int(p[1])), 1)
 
-    def _event_handler(self):
+    def _event_handler(self) -> None:
         """
         Handles detecting clicking of a key
-        :return:
+        :return: None
         """
         wrapper = Shape()
         for event in pygame.event.get():
