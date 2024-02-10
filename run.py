@@ -1,7 +1,7 @@
 import pygame
 from source.views.edit import Edit
 from source.views.start import Start
-from source.views.type_refac import Type
+from source.views.type import Type
 from source.state.view_manager import ViewManager
 from source.state.edit_ui_manager import EditUIState
 from source.views.constants import WIDTH, HEIGHT, FPS
@@ -12,7 +12,6 @@ class Main:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        print(type(self.screen))
         self.clock = pygame.time.Clock()
 
         pygame.display.set_caption("Bezier Curve Editor")

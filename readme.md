@@ -23,7 +23,7 @@ Bézier curves editor made for the contest for participants of numerical analysi
 
 The subject of the competition was to create a font editing program, design a font yourself, and write a program that allows you to type with the created font.
 
-![home](https://i.ibb.co/gPNJrdr/home.png)
+![home](https://i.ibb.co/mcYSQKH/obraz-2024-02-10-132930174.png)
 
 ![letter_1](https://i.ibb.co/WG44XBd/letter-grid.png)
 
@@ -43,10 +43,10 @@ Create a virtual environment and install required packages.
 
 You can do this via ```pip install -r requirements.txt```
 
-If you want to run editor run the ```run.py``` file, and if program for typing then run ```type.py```.  
-
 While in the main menu of editing program you can load letters created for the contest by clicking ```Load shape``` and selecting the json file from the ```letters_json``` folder,
 also it is possible to load a background by clicking ```Load background``` and selecting image from ```letters_raw_extracted``` folder.
+
+By clicking type you open a view for typing with letters that was designed by me for the contest.
 
 # Features
 
