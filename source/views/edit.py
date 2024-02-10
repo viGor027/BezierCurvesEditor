@@ -100,6 +100,7 @@ class Edit:
             shape_to_be_loaded = json.load(json_with_shape)
             self.shape.load_shape(shape_to_be_loaded)
             self.ui_state.shape_loaded = True
+            print(self.shape.get_shape())
 
     def _draw_grid(self) -> None:
         """

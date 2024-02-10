@@ -4,7 +4,7 @@ import numpy as np
 
 class Shape:
     def __init__(self):
-        self._shape: list[list] = []
+        self._shape: list[list[list]] = []
         self._current_curve_id: int = -1
 
     def new_curve(self) -> None:
@@ -18,13 +18,13 @@ class Shape:
             self._shape.append([])
             self._current_curve_id += 1
 
-    def add_point(self, point: tuple) -> None:
+    def add_point(self, point: list) -> None:
         """
         :param point: point to be added to curve
         :return: None
         """
         if self._current_curve_id != -1:
-            self._shape[self._current_curve_id].append(point)
+            self._shape[self._current_curve_id].append(list(point))
 
     def update_point(self, point_id: int, pos: tuple) -> None:
         """
@@ -129,10 +129,10 @@ class Shape:
             vector = last_point - orientation_point
             self.c0_connection()
             current_last_point = np.array(self._shape[self._current_curve_id][0])
-            self.add_point(tuple(current_last_point + vector))
-            self.add_point(point)
+            self.add_point(list(current_last_point + vector))
+            self.add_point(list(point))
 
-    def load_shape(self, shape: list[list]) -> None:
+    def load_shape(self, shape: list[list]) -> 'Shape':
         """
         Loads shape to object
         :param shape: list of curves of loaded json file
@@ -140,6 +140,7 @@ class Shape:
         """
         self._shape = shape
         self._current_curve_id = len(shape) - 1
+        return self
 
     def get_current_curve_id(self) -> int:
         """
@@ -147,7 +148,7 @@ class Shape:
         """
         return self._current_curve_id
 
-    def get_shape(self) -> list[list[tuple]]:
+    def get_shape(self) -> list[list[list]]:
         """
         :return: array of curves that make up a shape.
         """

@@ -30,6 +30,8 @@ class Start:
                          [WIDTH // 2 - 250 / 2, HEIGHT // 4 + (70 + 15) * 1, 250, 70])  # Read image
         pygame.draw.rect(self.display, BUTTON_COLOR,
                          [WIDTH // 2 - 250 / 2, HEIGHT // 4 + (70 + 15) * 2, 250, 70])  # Read shape
+        pygame.draw.rect(self.display, BUTTON_COLOR,
+                         [WIDTH // 2 - 250 / 2, HEIGHT // 4 + (70 + 15) * 3, 250, 70])  # Read shape
 
     def _draw_text(self) -> None:
         """
@@ -40,10 +42,13 @@ class Start:
         open_editor_text = smallfont.render('Open editor', True, BLACK)
         load_background_text = smallfont.render('Load background', True, BLACK)
         load_shape_text = smallfont.render('Load shape', True, BLACK)
+        type_text = smallfont.render('Type', True, BLACK)
 
         self.display.blit(open_editor_text, (WIDTH // 2 - 250 / 2 + 75, HEIGHT // 4 + 25))
         self.display.blit(load_background_text, (WIDTH // 2 - 250 / 2 + 55, HEIGHT // 4 + (70 + 15) * 1 + 25))
         self.display.blit(load_shape_text, (WIDTH // 2 - 250 / 2 + 75, HEIGHT // 4 + (70 + 15) * 2 + 25))
+        self.display.blit(type_text, (WIDTH // 2 - 250 / 2 + 100, HEIGHT // 4 + (70 + 15) * 3 + 25))
+
 
     def _event_handler(self) -> None:
         """
@@ -70,6 +75,11 @@ class Start:
                         HEIGHT // 4 + (70 + 15) * 2 <= mouse[1] <= HEIGHT // 4 + (70 + 15) * 2 + 70:
                     shape_path = Start._open_file_dialog('json')
                     self.view_manager.set_shape_path(shape_path)
+                elif event.button == 1 and \
+                        WIDTH // 2 - 250 / 2 + 75 <= mouse[0] <= WIDTH // 2 - 250 / 2 + 75 + 250 and \
+                        HEIGHT // 4 + (70 + 15) * 3 <= mouse[1] <= HEIGHT // 4 + (70 + 15) * 3 + 70:
+                    self.view_manager.set_state('type')
+
 
     @staticmethod
     def _open_file_dialog(ftype: str) -> str:
