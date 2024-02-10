@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 
-def calc_distance(control_points: list):
+def calc_distance(control_points: list) -> float:
     """
     Calculates distance from first to last control point going through every control point
     :param control_points: list of control points
@@ -16,7 +16,7 @@ def calc_distance(control_points: list):
     return dist
 
 
-def get_optimized_moments(control_points: list):
+def get_optimized_moments(control_points: list) -> np.array:
     """
     Returns an array of moments for sampling the curve
     :param control_points: list of control points
@@ -25,7 +25,7 @@ def get_optimized_moments(control_points: list):
     return np.linspace(0, 1, num=int(calc_distance(control_points)//10 * 5))
 
 
-def calc_distances_experimental(control_points: list):
+def calc_distances_experimental(control_points: list) -> list[float]:
     """
     Calculates distance from first to last control point going through every control point
     :param control_points: list of control points
@@ -39,11 +39,11 @@ def calc_distances_experimental(control_points: list):
     return dist
 
 
-def get_optimized_moments_experimental(control_points: list):
+def get_optimized_moments_experimental(control_points: list) -> np.array:
     """
     Returns an array of moments for sampling the curve
     :param control_points: list of control points
-    :return: np.array
+    :return: np.array of moments
     """
     distances = calc_distances_experimental(control_points)
     moments = np.array([])

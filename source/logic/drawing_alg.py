@@ -1,4 +1,4 @@
-def de_casteljau(t, points):
+def de_casteljau(t: float, points: list[tuple]) -> tuple:
     if len(points) == 1:
         return points[0]
     else:

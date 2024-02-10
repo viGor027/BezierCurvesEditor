@@ -19,7 +19,7 @@ class Edit:
         self.shape = Shape()
         self.ui_state = EditUIState()
 
-    def run(self):
+    def run(self) -> None:
         """
         Editing view
         :return: None
@@ -34,7 +34,7 @@ class Edit:
         self._draw_control_points()
         self._draw_curves()
 
-    def _event_handler(self):
+    def _event_handler(self) -> None:
         """
         Handles detecting and running appropriate actions for events
         :return: None
@@ -79,7 +79,7 @@ class Edit:
         if self.ui_state.dragging and pygame.mouse.get_pressed()[2]:
             self.shape.update_point(self.ui_state.dragged_point_index, pygame.mouse.get_pos())
 
-    def _bg_handler(self, bg_path: str | None):
+    def _bg_handler(self, bg_path: str | None) -> None:
         """
         Handles loading background
         :param bg_path: path to background
@@ -89,7 +89,7 @@ class Edit:
             bg = pygame.image.load(bg_path)
             self.display.blit(bg, (0, 0))
 
-    def _shape_handler(self, shape_path: str | None):
+    def _shape_handler(self, shape_path: str | None) -> None:
         """
         Handles loading shape
         :param shape_path: path to json file containing shape
@@ -101,7 +101,7 @@ class Edit:
             self.shape.load_shape(shape_to_be_loaded)
             self.ui_state.shape_loaded = True
 
-    def _draw_grid(self):
+    def _draw_grid(self) -> None:
         """
         Draws helper lines
         :return:
@@ -125,7 +125,7 @@ class Edit:
                 else:
                     pygame.draw.line(self.display, BLACK, (0, i), (WIDTH, i))
 
-    def _draw_buttons(self):
+    def _draw_buttons(self) -> None:
         """
         Draws UI buttons
         :return: None
@@ -154,7 +154,7 @@ class Edit:
         else:
             pygame.draw.rect(self.display, BUTTON_INACTIVE_COLOR, [10, 110, 160, 40])
 
-    def _draw_text(self):
+    def _draw_text(self) -> None:
         """
         Displays text on UI buttons
         :return: None
@@ -177,7 +177,7 @@ class Edit:
             self.display.blit(edit_off, (12 + 95, 23 + 50))
         self.display.blit(show_background, (12 + 30, 23 + 100))
 
-    def _draw_control_points(self):
+    def _draw_control_points(self) -> None:
         """
         Draws control points of curves making up the shape
         :return: None
@@ -193,7 +193,7 @@ class Edit:
                         pygame.draw.circle(self.display, BLACK,
                                            shape[control_points_id][point_id], CONTROL_POINT_RADIUS)
 
-    def _draw_curves(self):
+    def _draw_curves(self) -> None:
         """
         Draws all curves from shape
         :return: None

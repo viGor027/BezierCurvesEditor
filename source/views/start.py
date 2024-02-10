@@ -10,7 +10,7 @@ class Start:
         self.display = display
         self.view_manager = view_manager
 
-    def run(self):
+    def run(self) -> None:
         """
         Start view
         :return:  None
@@ -20,7 +20,7 @@ class Start:
         self._draw_text()
         self._event_handler()
 
-    def _draw_buttons(self):
+    def _draw_buttons(self) -> None:
         """
         Draws UI buttons
         :return: None
@@ -31,7 +31,7 @@ class Start:
         pygame.draw.rect(self.display, BUTTON_COLOR,
                          [WIDTH // 2 - 250 / 2, HEIGHT // 4 + (70 + 15) * 2, 250, 70])  # Read shape
 
-    def _draw_text(self):
+    def _draw_text(self) -> None:
         """
         Displays text on UI buttons
         :return: None
@@ -45,7 +45,7 @@ class Start:
         self.display.blit(load_background_text, (WIDTH // 2 - 250 / 2 + 55, HEIGHT // 4 + (70 + 15) * 1 + 25))
         self.display.blit(load_shape_text, (WIDTH // 2 - 250 / 2 + 75, HEIGHT // 4 + (70 + 15) * 2 + 25))
 
-    def _event_handler(self):
+    def _event_handler(self) -> None:
         """
         Handles detecting and running appropriate actions for events
         :return: None
@@ -72,11 +72,11 @@ class Start:
                     self.view_manager.set_shape_path(shape_path)
 
     @staticmethod
-    def _open_file_dialog(ftype: str):
+    def _open_file_dialog(ftype: str) -> str:
         """
         Function for loading background and shape from a file
         :param ftype: specifies whether we load background(image) or shape(json)
-        :return:
+        :return: path to a file
         """
         file_type = {
             'json': ("JSON files", "*.json"),

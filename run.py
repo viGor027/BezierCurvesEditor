@@ -24,7 +24,7 @@ class Main:
 
         self.views = {"start": self.start, "edit": self.edit}
 
-    def run(self):
+    def run(self) -> None:
         """
         runtime loop
         :return: None

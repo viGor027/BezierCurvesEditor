@@ -1,4 +1,7 @@
-def p(t, W, w):
+from typing import Callable
+
+
+def p(t: float, W: list, w: list) -> tuple:
     n = len(W) - 1
     u = 1 - t
     b = n
@@ -12,10 +15,10 @@ def p(t, W, w):
         d *= t
         b *= (n - i) / (i + 1)
     nwp = get_nwp(t, w)
-    return (p[0] / nwp, p[1] / nwp)
+    return p[0] / nwp, p[1] / nwp
 
 
-def get_nwp(t, w):
+def get_nwp(t: float, w: list) -> float:
     n = len(w) - 1
     u = 1 - t
     b = n
@@ -28,5 +31,5 @@ def get_nwp(t, w):
     return p
 
 
-def bezier(W, w):
+def bezier(W: list, w: list) -> Callable:
     return lambda t: p(t, W, w)

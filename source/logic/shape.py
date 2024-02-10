@@ -7,7 +7,7 @@ class Shape:
         self._shape: list[list] = []
         self._current_curve_id: int = -1
 
-    def new_curve(self):
+    def new_curve(self) -> None:
         """
         Adds another curve to the shape on click of a user
         :return: None
@@ -18,7 +18,7 @@ class Shape:
             self._shape.append([])
             self._current_curve_id += 1
 
-    def add_point(self, point: tuple):
+    def add_point(self, point: tuple) -> None:
         """
         :param point: point to be added to curve
         :return: None
@@ -26,7 +26,7 @@ class Shape:
         if self._current_curve_id != -1:
             self._shape[self._current_curve_id].append(point)
 
-    def update_point(self, point_id: int, pos: tuple):
+    def update_point(self, point_id: int, pos: tuple) -> None:
         """
         Updates dragged point cords.
         :param point_id: id of a point on currently edited curve that is being dragged
@@ -35,7 +35,7 @@ class Shape:
         """
         self._shape[self._current_curve_id][point_id] = [pos[0], pos[1]]
 
-    def save(self, directory: str):
+    def save(self, directory: str) -> None:
         """
         :param directory: the place where the json file with the shape will be saved, including name of the file and
         *.extension
@@ -44,7 +44,7 @@ class Shape:
         with open(directory, 'w', encoding='utf-8') as f:
             json.dump(self._shape, f, ensure_ascii=False, indent=4)
 
-    def get_closest_point(self, mouse_pos: tuple, through_all: bool = False):
+    def get_closest_point(self, mouse_pos: tuple, through_all: bool = False) -> tuple:
         """
         :param through_all:  If true find the closest point from all the curves,
                              else find the closest point on currently edited curve
@@ -67,7 +67,7 @@ class Shape:
                 closest_point_id = i
         return closest_point_id, self._current_curve_id
 
-    def _search_through_all_curves(self, mouse_pos: tuple):
+    def _search_through_all_curves(self, mouse_pos: tuple) -> tuple:
         """
         :param mouse_pos: position of a mouse
         :return: id of closest point to the mouse from all the curves and id of its curve
@@ -84,7 +84,7 @@ class Shape:
                     closest_curve_id = curve_id
         return closest_point_id, closest_curve_id
 
-    def switch_curve(self, mouse_pos: tuple):
+    def switch_curve(self, mouse_pos: tuple) -> None:
         """
         Changes the currently edited curve to a different one
         :param mouse_pos: position of a mouse
@@ -93,7 +93,7 @@ class Shape:
         closest_point_id, closest_curve_id = self._search_through_all_curves(mouse_pos)
         self._current_curve_id = closest_curve_id
 
-    def delete_point(self, mouse_pos: tuple):
+    def delete_point(self, mouse_pos: tuple) -> None:
         """
         deletes a point from currently edited curve
         :param mouse_pos:  position of mouse
@@ -106,7 +106,7 @@ class Shape:
                 self._shape.pop(currently_edited_curve_id)
                 self._current_curve_id = -1
 
-    def c0_connection(self):
+    def c0_connection(self) -> None:
         """
         Creates new curve with its first point same as last point of current curve
         :return: None
@@ -116,7 +116,13 @@ class Shape:
             self.new_curve()
             self.add_point(point_to_be_copied)
 
-    def c2_connection(self, point: tuple):
+    def c2_connection(self, point: tuple) -> None:
+        """
+        Creates new curve and adds a new point to it so the first and second derivative is continuous at the
+        joint of previous and current curve
+        :param point:
+        :return:
+        """
         if self._current_curve_id != -1 and len(self._shape[self._current_curve_id]) >= 2:
             orientation_point = np.array(self._shape[self._current_curve_id][-2])
             last_point = np.array(self._shape[self._current_curve_id][-1])
@@ -126,7 +132,7 @@ class Shape:
             self.add_point(tuple(current_last_point + vector))
             self.add_point(point)
 
-    def load_shape(self, shape: list[list]):
+    def load_shape(self, shape: list[list]) -> None:
         """
         Loads shape to object
         :param shape: list of curves of loaded json file
@@ -135,13 +141,13 @@ class Shape:
         self._shape = shape
         self._current_curve_id = len(shape) - 1
 
-    def get_current_curve_id(self):
+    def get_current_curve_id(self) -> int:
         """
         :return: id of a currently edited curve
         """
         return self._current_curve_id
 
-    def get_shape(self):
+    def get_shape(self) -> list[list[tuple]]:
         """
         :return: array of curves that make up a shape.
         """
