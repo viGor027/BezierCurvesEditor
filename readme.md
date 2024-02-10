@@ -59,7 +59,7 @@ Beside visible UI buttons you can use the following keyboard shortcuts:
 ```2``` - creates new curve taking care of continuity of second derivative( first and second derivatives are continuous)  
 ```space``` - deletes point on currently edited curve that is the closest to current cursor position  
 
-### Typing program
+### Typing
 
 ```tab``` - cursive on/off
 
