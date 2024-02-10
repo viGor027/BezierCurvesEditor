@@ -21,7 +21,8 @@
 
 Bézier curves editor made for the contest for participants of numerical analysis course during my studies at University of Wroclaw.  
 
-The subject of the competition was to create a font editing program, design a font yourself, and write a program that allows you to type with the created font.
+The subject of the competition was to create a font editing program, design a font yourself, and write a program that allows you to type with the created font
+(typing program was connected to editing program and is now a view).
 
 ![home](https://i.ibb.co/mcYSQKH/obraz-2024-02-10-132930174.png)
 
