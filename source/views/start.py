@@ -6,13 +6,21 @@ from source.state.view_manager import ViewManager
 
 
 class Start:
+    """
+        Class representing the starting view.
+
+        Attributes:
+            display (pygame.surface.Surface): The display surface for rendering the starting view.
+            view_manager (ViewManager): Object managing the view state.
+    """
+
     def __init__(self, display: pygame.surface.Surface, view_manager: ViewManager):
         self.display = display
         self.view_manager = view_manager
 
     def run(self) -> None:
         """
-        Start view
+        Start view.
         :return:  None
         """
         self.display.fill(WHITE)
@@ -22,7 +30,7 @@ class Start:
 
     def _draw_buttons(self) -> None:
         """
-        Draws UI buttons
+        Draws UI buttons.
         :return: None
         """
         pygame.draw.rect(self.display, BUTTON_COLOR, [WIDTH // 2 - 250 / 2, HEIGHT // 4, 250, 70])  # Open editor
@@ -35,7 +43,7 @@ class Start:
 
     def _draw_text(self) -> None:
         """
-        Displays text on UI buttons
+        Displays text on UI buttons.
         :return: None
         """
         smallfont = pygame.font.SysFont('Bahnschrift', 18)
@@ -49,10 +57,9 @@ class Start:
         self.display.blit(load_shape_text, (WIDTH // 2 - 250 / 2 + 75, HEIGHT // 4 + (70 + 15) * 2 + 25))
         self.display.blit(type_text, (WIDTH // 2 - 250 / 2 + 100, HEIGHT // 4 + (70 + 15) * 3 + 25))
 
-
     def _event_handler(self) -> None:
         """
-        Handles detecting and running appropriate actions for events
+        Handles detecting and running appropriate actions for events.
         :return: None
         """
         mouse = pygame.mouse.get_pos()
@@ -80,13 +87,12 @@ class Start:
                         HEIGHT // 4 + (70 + 15) * 3 <= mouse[1] <= HEIGHT // 4 + (70 + 15) * 3 + 70:
                     self.view_manager.set_state('type')
 
-
     @staticmethod
     def _open_file_dialog(ftype: str) -> str:
         """
-        Function for loading background and shape from a file
-        :param ftype: specifies whether we load background(image) or shape(json)
-        :return: path to a file
+        Function for loading background and shape from a file.
+        :param ftype: specifies whether we load background(image) or shape(json).
+        :return: path to a file.
         """
         file_type = {
             'json': ("JSON files", "*.json"),

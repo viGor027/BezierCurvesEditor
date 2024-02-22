@@ -3,9 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class EditUIState:
-    """
-    Keeps information about state of edit view UI
-    """
+    """Keeps information about state of edit view UI."""
     draw_grid: bool = True
     show_background: bool = True
     shape_loaded: bool = False

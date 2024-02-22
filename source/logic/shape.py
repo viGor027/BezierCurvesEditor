@@ -3,13 +3,20 @@ import numpy as np
 
 
 class Shape:
+    """
+    Class representing a shape composed of Bézier curves.
+
+    Attributes:
+        _shape (list): List of curves, where each curve is a list of points represented as lists [x, y].
+        _current_curve_id (int): Index of the currently edited curve.
+    """
     def __init__(self):
         self._shape: list[list[list]] = []
         self._current_curve_id: int = -1
 
     def new_curve(self) -> None:
         """
-        Adds another curve to the shape on click of a user
+        Adds another curve to the shape on click of a user.
         :return: None
         """
         if len(self._shape) > 0 and not self._shape[-1]:
@@ -20,7 +27,7 @@ class Shape:
 
     def add_point(self, point: list) -> None:
         """
-        :param point: point to be added to curve
+        :param point: point to be added to curve.
         :return: None
         """
         if self._current_curve_id != -1:
@@ -29,15 +36,15 @@ class Shape:
     def update_point(self, point_id: int, pos: tuple) -> None:
         """
         Updates dragged point cords.
-        :param point_id: id of a point on currently edited curve that is being dragged
-        :param pos: new position of a point on current curve with id point_id
+        :param point_id: id of a point on currently edited curve that is being dragged.
+        :param pos: new position of a point on current curve with id point_id.
         :return:  None
         """
         self._shape[self._current_curve_id][point_id] = [pos[0], pos[1]]
 
     def save(self, directory: str) -> None:
         """
-        :param directory: the place where the json file with the shape will be saved, including name of the file and
+        :param directory: the place where the json file with the shape will be saved, including name of the file and.
         *.extension
         :return: None
         """
@@ -46,11 +53,12 @@ class Shape:
 
     def get_closest_point(self, mouse_pos: tuple, through_all: bool = False) -> tuple:
         """
+        Finds the closest point to a cursor.
         :param through_all:  If true find the closest point from all the curves,
-                             else find the closest point on currently edited curve
-        :param mouse_pos: position of a mouse
+                             else find the closest point on currently edited curve.
+        :param mouse_pos: position of a mouse.
         :return: id of closest point to the mouse on currently edited curve if through_all is True,
-                 else id of closest point to the mouse from all the curves
+                 else id of closest point to the mouse from all the curves.
         """
         if through_all:
             return self._search_through_all_curves(mouse_pos)
@@ -69,8 +77,8 @@ class Shape:
 
     def _search_through_all_curves(self, mouse_pos: tuple) -> tuple:
         """
-        :param mouse_pos: position of a mouse
-        :return: id of closest point to the mouse from all the curves and id of its curve
+        :param mouse_pos: position of a mouse.
+        :return: id of closest point to the mouse from all the curves and id of its curve.
         """
         closest_point_id = None
         closest_curve_id = None
@@ -86,8 +94,8 @@ class Shape:
 
     def switch_curve(self, mouse_pos: tuple) -> None:
         """
-        Changes the currently edited curve to a different one
-        :param mouse_pos: position of a mouse
+        Changes the currently edited curve to a different one.
+        :param mouse_pos: position of a mouse.
         :return: None
         """
         closest_point_id, closest_curve_id = self._search_through_all_curves(mouse_pos)
@@ -95,8 +103,8 @@ class Shape:
 
     def delete_point(self, mouse_pos: tuple) -> None:
         """
-        deletes a point from currently edited curve
-        :param mouse_pos:  position of mouse
+        Deletes a point from currently edited curve.
+        :param mouse_pos:  position of mouse.
         :return: None
         """
         closest_point_id, currently_edited_curve_id = self.get_closest_point(mouse_pos)
@@ -108,7 +116,7 @@ class Shape:
 
     def c0_connection(self) -> None:
         """
-        Creates new curve with its first point same as last point of current curve
+        Creates new curve with its first point same as last point of current curve.
         :return: None
         """
         if self._current_curve_id != -1:
@@ -119,8 +127,8 @@ class Shape:
     def c2_connection(self, point: tuple) -> None:
         """
         Creates new curve and adds a new point to it so the first and second derivative is continuous at the
-        joint of previous and current curve
-        :param point:
+        joint of previous and current curve.
+        :param point: new point(to be added).
         :return:
         """
         if self._current_curve_id != -1 and len(self._shape[self._current_curve_id]) >= 2:
@@ -134,9 +142,9 @@ class Shape:
 
     def load_shape(self, shape: list[list]) -> 'Shape':
         """
-        Loads shape to object
-        :param shape: list of curves of loaded json file
-        :return:
+        Loads shape to object.
+        :param shape: list of curves of loaded json file.
+        :return: Shape object
         """
         self._shape = shape
         self._current_curve_id = len(shape) - 1

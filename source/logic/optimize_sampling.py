@@ -4,9 +4,9 @@ import numpy as np
 
 def calc_distance(control_points: list) -> float:
     """
-    Calculates distance from first to last control point going through every control point
-    :param control_points: list of control points
-    :return:
+    Calculates distance from first to last control point going through every control point.
+    :param control_points: list of control points.
+    :return: float
     """
     dist = 0
     for i in range(len(control_points) - 1):
@@ -18,8 +18,8 @@ def calc_distance(control_points: list) -> float:
 
 def get_optimized_moments(control_points: list) -> np.array:
     """
-    Returns an array of moments for sampling the curve
-    :param control_points: list of control points
+    Returns an array of moments for sampling the curve.
+    :param control_points: list of control points.
     :return: np.array
     """
     return np.linspace(0, 1, num=int(calc_distance(control_points)//10 * 5))
@@ -27,9 +27,9 @@ def get_optimized_moments(control_points: list) -> np.array:
 
 def calc_distances_experimental(control_points: list) -> list[float]:
     """
-    Calculates distance from first to last control point going through every control point
-    :param control_points: list of control points
-    :return: table of distances such that i'th element is distance between i'th and i+1 control point
+    Calculates distance from first to last control point going through every control point.
+    :param control_points: list of control points.
+    :return: table of distances such that i'th element is distance between i'th and i+1 control point.
     """
     dist = []
     for i in range(len(control_points) - 1):
@@ -41,9 +41,9 @@ def calc_distances_experimental(control_points: list) -> list[float]:
 
 def get_optimized_moments_experimental(control_points: list) -> np.array:
     """
-    Returns an array of moments for sampling the curve
-    :param control_points: list of control points
-    :return: np.array of moments
+    Returns an array of moments for sampling the curve.
+    :param control_points: list of control points.
+    :return: np.array of moments.
     """
     distances = calc_distances_experimental(control_points)
     moments = np.array([])

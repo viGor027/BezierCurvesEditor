@@ -9,6 +9,20 @@ from source.logic.shape import Shape
 
 
 class Main:
+    """
+        Main class for the Bezier Curve Editor application.
+
+        Attributes:
+            screen (pygame.surface.Surface): The main display surface for the application.
+            clock (pygame.time.Clock): The clock object for controlling the frame rate.
+            edit_ui_state_manager (EditUIState): Object managing the state of the edit UI.
+            shape (Shape): Object representing the shape being edited.
+            view_manager (ViewManager): Object managing the current view state.
+            start (Start): Instance of the Start view.
+            edit (Edit): Instance of the Edit view.
+            type (Type): Instance of the Type view.
+            views (dict): Dictionary mapping view names to their instances.
+    """
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -28,7 +42,7 @@ class Main:
 
     def run(self) -> None:
         """
-        runtime loop
+        Runtime loop.
         :return: None
         """
         while True:

@@ -4,6 +4,17 @@ from math import tan, radians
 
 
 class Caption:
+    """
+    Class managing a caption for text rendering.
+
+    Attributes:
+        letters (list): List containing shapes of individual letters.
+        begin_from (int): Starting position for rendering the next letter.
+        prev_begin_from (list): List storing previous starting positions.
+        cursive (int): Flag indicating whether cursive style is enabled (1) or disabled (0).
+        adjust_p (list): List of letters to be adjusted in the y-axis for better visual appearance.
+        adjust_ly (list): List of letters to be adjusted in the y-axis for cursive style.
+    """
     def __init__(self):
         self.letters = []
         self.begin_from = 40
@@ -26,10 +37,10 @@ class Caption:
 
     def adjust_single_letter(self, letter_shape: Shape, shift_y: int, scale: float, shift_x: int = 0) -> None:
         """
-        :param letter_shape: Shape object containing letter 
-        :param shift_y: y-axis shift
-        :param scale: value which will be used to scale letter
-        :param shift_x: x-axis shift
+        :param letter_shape: Shape object containing letter.
+        :param shift_y: y-axis shift.
+        :param scale: value which will be used to scale letter.
+        :param shift_x: x-axis shift.
         :return: None
         """
         self.prev_begin_from.append(self.begin_from)
@@ -58,9 +69,9 @@ class Caption:
     @staticmethod
     def tilt(points: list, shear_factor: float) -> list[list]:
         """
-        Affinity transformation for cursive
-        :param points:
-        :param shear_factor:
+        Affinity transformation for cursive.
+        :param points: list of control points.
+        :param shear_factor: determines the slope level.
         :return:
         """
         sheared_points = [[x + y * shear_factor, y] for x, y in points]
@@ -68,7 +79,7 @@ class Caption:
 
     def make_cursive(self, side: int) -> None:
         """
-        :param side: value indicating if cursive is "on" or "off"
+        :param side: value indicating if cursive is "on" or "off".
         :return: None
         """
         for letter_id in range(len(self.letters)):

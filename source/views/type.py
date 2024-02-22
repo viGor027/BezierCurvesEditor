@@ -10,6 +10,14 @@ from source.logic.optimize_sampling import calc_distance
 
 
 class Type:
+    """
+        Class representing the typing view.
+
+        Attributes:
+            display (pygame.surface.Surface): The display surface for rendering the typing view.
+            view_manager (ViewManager): Object managing the view state.
+            caption (Caption): Object representing the caption being typed.
+    """
     def __init__(self, display: pygame.surface.Surface, view_manager: ViewManager):
         self.display = display
         self.view_manager = view_manager
@@ -17,7 +25,7 @@ class Type:
 
     def run(self) -> None:
         """
-        Typing view
+        Typing view.
         :return: None
         """
         self.display.fill(WHITE)
@@ -27,7 +35,7 @@ class Type:
 
     def _draw_line(self) -> None:
         """
-        Draws line that points current typing place
+        Draws line that points current typing place.
         :return: None
         """
         pygame.draw.line(self.display, BLACK,
@@ -37,7 +45,7 @@ class Type:
 
     def _draw_letters(self) -> None:
         """
-        Draws all letters from caption
+        Draws all letters from caption.
         :return: None
         """
         for letter in self.caption.letters:
@@ -53,7 +61,7 @@ class Type:
 
     def _event_handler(self) -> None:
         """
-        Handles detecting clicking of a key
+        Handles detecting clicking of a key.
         :return: None
         """
         wrapper = Shape()

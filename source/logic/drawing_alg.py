@@ -1,4 +1,12 @@
 def de_casteljau(t: float, points: list[tuple]) -> tuple:
+    """
+    Performs the De Casteljau's algorithm for Bézier curve evaluation.
+    This recursive function calculates the Bézier curve point at a specific parameter t
+    using the De Casteljau's algorithm.
+    :param t: Parameter value between 0.0 and 1.0 representing the position on the curve.
+    :param points: List of control points, each represented as a tuple (x, y).
+    :return: tuple
+    """
     if len(points) == 1:
         return points[0]
     else:

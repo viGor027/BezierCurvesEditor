@@ -13,6 +13,15 @@ from source.logic.optimize_sampling import get_optimized_moments, get_optimized_
 
 
 class Edit:
+    """
+        Class representing the main editing view.
+
+        Attributes:
+            display (pygame.surface.Surface): The display surface for rendering the editing view.
+            view_manager (ViewManager): Object managing the view state.
+            shape (Shape): Object representing the shape and handling curve operations.
+            ui_state (EditUIState): Object managing the state of the UI elements.
+    """
     def __init__(self, display: pygame.surface.Surface, view_manager: ViewManager):
         self.display = display
         self.view_manager = view_manager
@@ -21,7 +30,7 @@ class Edit:
 
     def run(self) -> None:
         """
-        Editing view
+        Editing view.
         :return: None
         """
         self.display.fill(WHITE)
@@ -36,7 +45,7 @@ class Edit:
 
     def _event_handler(self) -> None:
         """
-        Handles detecting and running appropriate actions for events
+        Handles detecting and running appropriate actions for events.
         :return: None
         """
         mouse = pygame.mouse.get_pos()
@@ -81,8 +90,8 @@ class Edit:
 
     def _bg_handler(self, bg_path: str | None) -> None:
         """
-        Handles loading background
-        :param bg_path: path to background
+        Handles loading background.
+        :param bg_path: path to background.
         :return: None
         """
         if self.ui_state.show_background and bg_path:
@@ -91,8 +100,8 @@ class Edit:
 
     def _shape_handler(self, shape_path: str | None) -> None:
         """
-        Handles loading shape
-        :param shape_path: path to json file containing shape
+        Handles loading shape.
+        :param shape_path: path to json file containing shape.
         :return: None
         """
         if shape_path and not self.ui_state.shape_loaded:
@@ -104,8 +113,8 @@ class Edit:
 
     def _draw_grid(self) -> None:
         """
-        Draws helper lines
-        :return:
+        Draws helper lines.
+        :return: None
         """
         if self.ui_state.draw_grid:
             pygame.draw.line(self.display, BLACK, (WIDTH / 2 - 1, 0), (WIDTH / 2 - 1, HEIGHT))
@@ -128,8 +137,8 @@ class Edit:
 
     def _draw_buttons(self) -> None:
         """
-        Draws UI buttons
-        :return: None
+        Draws UI buttons.
+        :return: None.
          """
         # New curve button
         pygame.draw.rect(self.display, BUTTON_COLOR, [10, 10, 75, 40])
@@ -157,7 +166,7 @@ class Edit:
 
     def _draw_text(self) -> None:
         """
-        Displays text on UI buttons
+        Displays text on UI buttons.
         :return: None
         """
         smallfont = pygame.font.SysFont('Bahnschrift', 14)
@@ -180,7 +189,7 @@ class Edit:
 
     def _draw_control_points(self) -> None:
         """
-        Draws control points of curves making up the shape
+        Draws control points of curves making up the shape.
         :return: None
         """
         shape = self.shape.get_shape()
@@ -196,7 +205,7 @@ class Edit:
 
     def _draw_curves(self) -> None:
         """
-        Draws all curves from shape
+        Draws all curves from a shape.
         :return: None
         """
         shape = self.shape.get_shape()

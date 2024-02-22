@@ -1,3 +1,5 @@
+"""Faster (O(n)) drawing algorithm for Bezier Curves using base of Bernstein polynomials."""
+
 from typing import Callable
 
 
