@@ -2,4 +2,5 @@ venv
 .idea
 sandbox.py
 __pychache__
-sandbox.py
+run.spec
+build
