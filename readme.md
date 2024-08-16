@@ -40,14 +40,14 @@ The subject of the competition was to create a font editing program, design a fo
 
 # Getting started
 
-Create a virtual environment and install required packages.
+Download ```dist``` folder and run ```run.exe```.
 
-You can do this via ```pip install -r requirements.txt```
+*Note: .exe file was compiled on Windows machine with python 3.10.5. Same configuration is recommended.*
 
 While in the main menu of editing program you can load letters created for the contest by clicking ```Load shape``` and selecting the json file from the ```letters_json``` folder,
 also it is possible to load a background by clicking ```Load background``` and selecting image from ```letters_raw_extracted``` folder.
 
-By clicking type you open a view for typing with letters that was designed by me for the contest.
+By clicking ```type``` you open a view for typing with letters that was designed by me for the contest.
 
 # Features
 
