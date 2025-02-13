@@ -10,6 +10,7 @@
 # Table of Contents
 
 - [About](#about)
+  - [Demo](#demo)
 - [Getting Started](#getting-started)
 - [Features](#features)
   - [Editor](#editor)
@@ -19,10 +20,14 @@
 
 # About
 
-Bézier curves editor made for the contest for participants of numerical analysis course during my studies at University of Wroclaw.  
+A Bézier curve editor created for a contest for participants of a numerical analysis course during my studies at the University of Wrocław.  
 
-The subject of the competition was to create a font editing program, design a font yourself, and write a program that allows you to type with the created font
-(typing program was connected to editing program and is now a view).
+The goal of the competition was to develop a font editing program, design a font from scratch, and write a program that allows typing with the created font.  
+The typing program was integrated with the editing program.  
+
+### Demo  
+**You can watch a video showcasing the program in action by clicking the link below:** 
+[YouTube Demo](https://youtu.be/KqQhJ1v5JqQ)
 
 ![home](https://i.ibb.co/mcYSQKH/obraz-2024-02-10-132930174.png)
 
@@ -38,39 +43,40 @@ The subject of the competition was to create a font editing program, design a fo
 
 ![typing](https://i.ibb.co/JmNL9np/obraz-2024-02-05-174625660.png)
 
-# Getting started
+# Getting Started  
 
-Download ```dist``` folder and run ```run.exe```.
+Download the ```dist``` folder and run ```run.exe```.  
 
-*Note: .exe file was compiled on Windows machine with python 3.10.5. Same configuration is recommended.*
+*Note: The `.exe` file was compiled on a Windows machine using Python 3.10.5. The same configuration is recommended.*  
 
-While in the main menu of editing program you can load letters created for the contest by clicking ```Load shape``` and selecting the json file from the ```letters_json``` folder,
-also it is possible to load a background by clicking ```Load background``` and selecting image from ```letters_raw_extracted``` folder.
+While in the main menu of the editing program, you can load letters created for the contest by clicking ```Load Shape``` and selecting a JSON file from the ```letters_json``` folder.  
+It is also possible to load a background by clicking ```Load Background``` and selecting an image from the ```letters_raw_extracted``` folder.  
 
-By clicking ```type``` you open a view for typing with letters that was designed by me for the contest.
+By clicking ```Type```, you open a view for typing with the letters I designed for the contest.  
 
 # Features
 
 Beside visible UI buttons you can use the following keyboard shortcuts:
 
 ### Editor
-
-```e``` - changes currently edited curve to curve that is the closest to current cursor position  
-```n``` - creates new curve with its first point same as last point of currently edited curve  
-```2``` - creates new curve taking care of continuity of second derivative( first and second derivatives are continuous)  
-```space``` - deletes point on currently edited curve that is the closest to current cursor position  
+- **LMB** – Adds a new point to the currently edited curve.  
+- **RMB** – Drags a point of the currently edited curve.  
+- **E** – Changes the currently edited curve to the one closest to the current cursor position.  
+- **N** – Creates a new curve with its first point the same as the last point of the currently edited curve.  
+- **2** – Creates a new curve while ensuring continuity of the second derivative (both the first and second derivatives are continuous).  
+- **Space** – Deletes the point on the currently edited curve that is closest to the current cursor position.  
 
 ### Typing
 
-```tab``` - cursive on/off
+- ```Tab``` - cursive on/off
 
 # Process
 
-This paragraph gives a quick insight into how the font was created.  
+This paragraph provides a brief overview of how the font was created.  
 
-The first step was to plot the letters using a graphics tablet on the [Miro](miro.com) platform, all the letters were collected to ```letters_raw``` folder.  
-Next step was to process all the screenshots to match the background resolution of editing program, here Photoshop helped and the results were stored in ```letters_raw_extracted``` folder.  
-After that each letter was loaded to editing program and neatly reproduced with Bézier curves. All the letters were stored in ```letters_json``` folder.
+The first step was to sketch the letters using a graphics tablet on the [Miro](https://miro.com) platform. All the letters were then collected in the ```letters_raw``` folder.  
+Next, all the screenshots were processed to match the background resolution of the editing program. Here, Photoshop was used, and the results were stored in the ```letters_raw_extracted``` folder.  
+After that, each letter was loaded into the editing program and carefully recreated using Bézier curves. The finalized letters were stored in the ```letters_json``` folder.  
 
 # License
 
