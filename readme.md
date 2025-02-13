@@ -26,7 +26,7 @@ The goal of the competition was to develop a font editing program, design a font
 The typing program was integrated with the editing program.  
 
 ### Demo  
-**You can watch a video showcasing the program in action by clicking the link below:** 
+**You can watch a video showcasing the program in action by clicking the link below:**  
 [YouTube Demo](https://youtu.be/KqQhJ1v5JqQ)
 
 ![home](https://i.ibb.co/mcYSQKH/obraz-2024-02-10-132930174.png)
